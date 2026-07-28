@@ -1,4 +1,4 @@
-export type Category = 'Kitchen' | 'Decor' | 'Textiles' | 'Lighting'
+export type Category = string
 
 export type Variant = {
   id: string
@@ -21,6 +21,29 @@ export type Product = {
 }
 
 export const categories: Category[] = ['Kitchen', 'Decor', 'Textiles', 'Lighting']
+
+/** Placeholder imagery for products created in the admin demo */
+export const defaultProductImages: [string, string] = [
+  'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=900&q=80',
+  'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80',
+]
+
+export const salesTrend = [
+  { day: '14 Jul', orders: 4, revenue: 12800 },
+  { day: '15 Jul', orders: 6, revenue: 18450 },
+  { day: '16 Jul', orders: 3, revenue: 9200 },
+  { day: '17 Jul', orders: 8, revenue: 24100 },
+  { day: '18 Jul', orders: 5, revenue: 15600 },
+  { day: '19 Jul', orders: 7, revenue: 21340 },
+  { day: '20 Jul', orders: 9, revenue: 27890 },
+  { day: '21 Jul', orders: 4, revenue: 11200 },
+  { day: '22 Jul', orders: 6, revenue: 16900 },
+  { day: '23 Jul', orders: 8, revenue: 23150 },
+  { day: '24 Jul', orders: 5, revenue: 14820 },
+  { day: '25 Jul', orders: 7, revenue: 20500 },
+  { day: '26 Jul', orders: 10, revenue: 31200 },
+  { day: '27 Jul', orders: 6, revenue: 18740 },
+]
 
 export const products: Product[] = [
   {
@@ -322,6 +345,8 @@ export type MockOrder = {
   status: OrderStatus
   total: number
   eta: string
+  customerName: string
+  pendingDays: number
   items: { productId: string; name: string; quantity: number; price: number; variant?: string }[]
   timeline: { label: string; done: boolean; at?: string }[]
 }
@@ -333,6 +358,8 @@ export const mockOrders: MockOrder[] = [
     status: 'Shipped',
     total: 7098,
     eta: '31 Jul 2026',
+    customerName: 'Ananya Mehta',
+    pendingDays: 0,
     items: [
       { productId: 'aurora-pour-over', name: 'Aurora Ceramic Pour-Over Set', quantity: 1, price: 2899, variant: 'Clay' },
       { productId: 'brass-candle-pillar', name: 'Brass Column Candle Holders', quantity: 1, price: 2199 },
@@ -352,6 +379,8 @@ export const mockOrders: MockOrder[] = [
     status: 'Delivered',
     total: 5499,
     eta: 'Delivered 12 Jul',
+    customerName: 'Rohan Kapoor',
+    pendingDays: 0,
     items: [
       { productId: 'cloud-duvet-cover', name: 'Cloud Soft Cotton Duvet Cover', quantity: 1, price: 5499, variant: 'Queen · Ivory' },
     ],
@@ -369,6 +398,8 @@ export const mockOrders: MockOrder[] = [
     status: 'Processing',
     total: 8999,
     eta: '2 Aug 2026',
+    customerName: 'Priya Nair',
+    pendingDays: 3,
     items: [{ productId: 'arc-floor-lamp', name: 'Arc Brass Floor Lamp', quantity: 1, price: 8999 }],
     timeline: [
       { label: 'Ordered', done: true, at: '28 Jun' },
@@ -384,6 +415,8 @@ export const mockOrders: MockOrder[] = [
     status: 'Cancelled',
     total: 1799,
     eta: 'Cancelled',
+    customerName: 'Vikram Shah',
+    pendingDays: 0,
     items: [
       { productId: 'linen-apron-studio', name: 'Studio Linen Chef Apron', quantity: 1, price: 1799, variant: 'Natural' },
     ],
