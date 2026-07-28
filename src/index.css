@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-canvas: #f3f1ec;
+  --color-paper: #fffefb;
+  --color-ink: #1c1917;
+  --color-mist: #7a746a;
+  --color-line: #e4dfd6;
+  --color-forest: #1f4d3a;
+  --color-moss: #2f6b52;
+  --color-brass: #9c7e4f;
+  --color-alert: #b45309;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+
+  --text-display: clamp(2.4rem, 5vw, 3.75rem);
+  --text-title: clamp(1.65rem, 3vw, 2.25rem);
+  --text-lead: 1.125rem;
+  --text-body: 1rem;
+  --text-caption: 0.8125rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.75rem;
+
+  --shadow-soft: 0 10px 30px rgba(28, 25, 23, 0.06);
+  --shadow-lift: 0 18px 40px rgba(28, 25, 23, 0.12);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    color: var(--color-ink);
+    background: var(--color-canvas);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    outline: none;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .text-display {
+    font-size: var(--text-display);
+    line-height: 1.08;
+  }
+
+  .text-title {
+    font-size: var(--text-title);
+    line-height: 1.15;
+  }
+
+  .text-lead {
+    font-size: var(--text-lead);
+    line-height: 1.5;
+  }
+
+  .text-caption {
+    font-size: var(--text-caption);
+    line-height: 1.4;
+  }
+}
