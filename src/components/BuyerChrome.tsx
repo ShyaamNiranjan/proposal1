@@ -1,6 +1,6 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Search, ShoppingBag, User } from 'lucide-react'
+import { LayoutDashboard, Search, ShoppingBag, User } from 'lucide-react'
 import { useState, type FormEvent } from 'react'
 import { useCart } from '../context/CartContext'
 
@@ -17,12 +17,12 @@ export function BuyerNav() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-paper/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 md:px-6">
-        <Link to="/" className="font-display text-xl tracking-tight text-ink md:text-2xl">
+      <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3 md:gap-4 md:px-6">
+        <Link to="/" className="shrink-0 font-display text-xl tracking-tight text-ink md:text-2xl">
           Xoom <span className="text-forest">Store</span>
         </Link>
 
-        <nav className="ml-2 hidden items-center gap-4 text-sm text-mist md:flex">
+        <nav className="hidden items-center gap-4 text-sm text-mist md:flex">
           <NavLink to="/shop" className={({ isActive }) => (isActive ? 'text-forest' : 'hover:text-ink')}>
             Shop
           </NavLink>
@@ -31,7 +31,10 @@ export function BuyerNav() {
           </NavLink>
         </nav>
 
-        <form onSubmit={onSearch} className="ml-auto flex min-w-0 flex-1 max-w-md items-center gap-2 rounded-md border border-line bg-canvas px-3 py-2">
+        <form
+          onSubmit={onSearch}
+          className="ml-auto flex min-w-0 flex-1 max-w-md items-center gap-2 rounded-md border border-line bg-canvas px-3 py-2"
+        >
           <Search size={16} className="shrink-0 text-mist" />
           <input
             value={query}
@@ -41,6 +44,15 @@ export function BuyerNav() {
             aria-label="Search products"
           />
         </form>
+
+        <Link
+          to="/admin"
+          className="hidden items-center gap-1.5 rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white shadow-sm transition hover:bg-slate-800 sm:inline-flex"
+          aria-label="Open admin console"
+        >
+          <LayoutDashboard size={14} />
+          Admin
+        </Link>
 
         <button type="button" className="hidden rounded-md p-2 text-mist hover:text-ink md:inline-flex" aria-label="Account">
           <User size={20} />
@@ -55,6 +67,16 @@ export function BuyerNav() {
               {itemCount}
             </span>
           ) : null}
+        </Link>
+      </div>
+
+      <div className="border-t border-line px-4 py-2 sm:hidden">
+        <Link
+          to="/admin"
+          className="flex w-full items-center justify-center gap-2 rounded-md border border-slate-700 bg-slate-900 px-3 py-2.5 text-xs font-semibold uppercase tracking-[0.08em] text-white"
+        >
+          <LayoutDashboard size={14} />
+          Open Admin Console
         </Link>
       </div>
     </header>
@@ -81,8 +103,12 @@ export function BuyerFooter() {
         </div>
         <div className="text-sm text-mist">
           <p className="mb-2 font-medium text-ink">Demo</p>
-          <Link to="/admin" className="inline-flex items-center gap-1 text-forest hover:underline">
-            Admin →
+          <Link
+            to="/admin"
+            className="inline-flex items-center gap-2 rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.08em] text-white hover:bg-slate-800"
+          >
+            <LayoutDashboard size={14} />
+            Admin console
           </Link>
           <p className="mt-3 text-caption">UI concept prototype · not a production system</p>
         </div>
