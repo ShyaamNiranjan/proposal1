@@ -23,8 +23,8 @@ npm run dev
 npm run build
 ```
 
-Vite `base` is set to `/proposal1/` for `https://shyaamniranjan.github.io/proposal1/`.  
-Custom domain CNAME: `xoomproposal.yniidi.com`.
+Primary URL: `https://xoomproposal.yniidi.com`  
+Vite `base` is `/` because the custom domain serves from root (not `/proposal1/`).
 
 ## What is mocked vs production
 
